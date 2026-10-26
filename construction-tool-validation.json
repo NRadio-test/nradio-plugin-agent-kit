@@ -1,0 +1,109 @@
+{
+  "observed_at_utc": "2026-10-26T07:24:28.356222+00:00",
+  "scope": "Local Python tooling and archive regression; no device install performed",
+  "cases": [
+    {
+      "case": "baseline_rebuild_is_byte_identical_to_device_preflight_artifact",
+      "status": "pass"
+    },
+    {
+      "case": "baseline_host_inspection",
+      "status": "pass"
+    },
+    {
+      "case": "new_project_identity_paths_unicode_title_and_sdk_hook_dollars",
+      "status": "pass"
+    },
+    {
+      "case": "generator_refuses_existing_project",
+      "status": "pass"
+    },
+    {
+      "case": "generated_project_build_and_host_inspection",
+      "status": "pass"
+    },
+    {
+      "case": "binary_png_crlf_and_nul_bytes_preserved_exactly",
+      "status": "pass"
+    },
+    {
+      "case": "builder_rejects_crlf_shebang_without_silent_conversion",
+      "status": "pass"
+    },
+    {
+      "case": "builder_rejects_native_elf_labelled_all",
+      "status": "pass"
+    },
+    {
+      "case": "builder_rejects_missing_conffile",
+      "status": "pass"
+    },
+    {
+      "case": "builder_rejects_control_field_injection",
+      "status": "pass"
+    },
+    {
+      "case": "builder_rejects_output_inside_payload",
+      "status": "pass"
+    },
+    {
+      "case": "empty_conffiles_list_builds_and_inspects",
+      "status": "pass"
+    },
+    {
+      "case": "builder_rejects_silently_ignored_control_metadata",
+      "status": "pass"
+    },
+    {
+      "case": "builder_rejects_x86_elf_under_aarch64_metadata",
+      "status": "pass"
+    },
+    {
+      "case": "inspector_rejects_parent-traversal",
+      "status": "pass"
+    },
+    {
+      "case": "inspector_rejects_absolute-path",
+      "status": "pass"
+    },
+    {
+      "case": "inspector_rejects_backslash-path",
+      "status": "pass"
+    },
+    {
+      "case": "inspector_rejects_duplicate_members",
+      "status": "pass"
+    },
+    {
+      "case": "inspector_rejects_links_without_extraction",
+      "status": "pass"
+    },
+    {
+      "case": "inspector_rejects_duplicate_control_fields",
+      "status": "pass"
+    },
+    {
+      "case": "inspector_rejects_missing_conffile",
+      "status": "pass"
+    },
+    {
+      "case": "inspector_rejects_non_executable_shebang",
+      "status": "pass"
+    },
+    {
+      "case": "inspector_rejects_native_elf_labelled_all",
+      "status": "pass"
+    },
+    {
+      "case": "inspector_enforces_expanded_size_limit",
+      "status": "pass"
+    }
+  ],
+  "tool_sha256": {
+    "build.py": "e4c0da1f17f7f7485cec94a060f64366766fbeb01f69b922cdbca971138ed3db",
+    "new-plugin.py": "609e610d5e40738dc0d3c8d0afbe353939c5e1591ad53438b4b7a66ec0179f96",
+    "inspect-ipk.py": "b59198e320df8f59b762c2a4791012ca559149fd8e04765821a7919a0f27409a"
+  },
+  "device_preflight_sample_unchanged": true,
+  "sample_sha256": "3f7292861bf27036d9a7e02425c67d64a7f4a991e78af5ef703dcf227f6aeff1"
+}

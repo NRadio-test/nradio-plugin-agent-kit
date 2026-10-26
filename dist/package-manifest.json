@@ -1,0 +1,53 @@
+{
+  "purpose": "Local plugin build record; no cloud publishing",
+  "package": "luci-app-nradio-demo",
+  "version": "1.0.0-1",
+  "architecture": "all",
+  "depends": [
+    "libc",
+    "luci-base"
+  ],
+  "conffiles": [
+    "/etc/config/nradio_demo"
+  ],
+  "luci_route": "nradioadv/system/nradio_demo",
+  "file": "luci-app-nradio-demo_1.0.0-1_all.ipk",
+  "size": 2217,
+  "source_bytes": 2912,
+  "md5": "0f58b5f05757a46e3e2829b5aa747aa3",
+  "sha256": "3f7292861bf27036d9a7e02425c67d64a7f4a991e78af5ef703dcf227f6aeff1",
+  "files": [
+    {
+      "path": "etc/config/nradio_demo",
+      "bytes": 62,
+      "mode": "0o644",
+      "sha256": "dfaedd4f797921d6e94cd792ea5f3181845087e817717a44a079db66e4def4a6"
+    },
+    {
+      "path": "etc/init.d/nradio-demo",
+      "bytes": 835,
+      "mode": "0o755",
+      "sha256": "9b185d9fb47ffd19099d37747946b5094a99e06550b96c4732f97101ea48782e"
+    },
+    {
+      "path": "usr/lib/lua/luci/controller/nradio_adv/nradio_demo.lua",
+      "bytes": 739,
+      "mode": "0o644",
+      "sha256": "d9723190870726bd958b41295308a031f0ebaef9a5f36c367d53602f8d5c4925"
+    },
+    {
+      "path": "usr/lib/lua/luci/model/cbi/nradio_adv/nradio_demo.lua",
+      "bytes": 875,
+      "mode": "0o644",
+      "sha256": "75037565d3ed2bbbf2b79b7df51267f4c232b3c791b63497a97f0f8a8133480b"
+    },
+    {
+      "path": "usr/libexec/nradio-demo/worker.sh",
+      "bytes": 401,
+      "mode": "0o755",
+      "sha256": "de2e221d2822357a36886bd9fd8bae14b229acb5d6234cdabadab26171c9b9aa"
+    }
+  ],
+  "device_validation": "not_run_for_this_build",
+  "local_import_candidate": "luci-app-nradio-demo_1.0.0-1_local.tar.gz"
+}

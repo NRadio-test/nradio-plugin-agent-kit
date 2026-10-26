@@ -1,0 +1,18 @@
+{
+  "package": "luci-app-nradio-demo",
+  "version": "1.0.0",
+  "release": 1,
+  "architecture": "all",
+  "title": "NRadio Demo",
+  "description": "Lightweight NRadio plugin development example",
+  "maintainer": "Example developer",
+  "section": "luci",
+  "license": "MIT",
+  "depends": ["libc", "luci-base"],
+  "conffiles": ["/etc/config/nradio_demo"],
+  "executable_files": ["etc/init.d/nradio-demo", "usr/libexec/nradio-demo/worker.sh"],
+  "uci_name": "nradio_demo",
+  "service_name": "nradio-demo",
+  "luci_route": "nradioadv/system/nradio_demo",
+  "local_bundle": true
+}

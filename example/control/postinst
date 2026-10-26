@@ -1,0 +1,6 @@
+#!/bin/sh
+[ -n "$IPKG_INSTROOT" ] && exit 0
+/etc/init.d/nradio-demo enable
+/etc/init.d/nradio-demo restart
+rm -f /tmp/luci-indexcache
+exit 0

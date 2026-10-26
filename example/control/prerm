@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -n "$IPKG_INSTROOT" ] && exit 0
+/etc/init.d/nradio-demo stop
+/etc/init.d/nradio-demo disable
+exit 0

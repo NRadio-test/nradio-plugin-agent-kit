@@ -1,0 +1,54 @@
+{
+  "profile": "nradio-gzip-tar-strict",
+  "status": "pass",
+  "file": "luci-app-nradio-demo_1.0.0-1_all.ipk",
+  "sha256": "3f7292861bf27036d9a7e02425c67d64a7f4a991e78af5ef703dcf227f6aeff1",
+  "bytes": 2217,
+  "control": {
+    "Package": "luci-app-nradio-demo",
+    "Version": "1.0.0-1",
+    "Architecture": "all",
+    "Maintainer": "Example developer",
+    "Section": "luci",
+    "Priority": "optional",
+    "Depends": "libc, luci-base",
+    "License": "MIT",
+    "Installed-Size": "2912",
+    "Description": "Lightweight NRadio plugin development example"
+  },
+  "source_bytes": 2912,
+  "files": [
+    {
+      "path": "etc/config/nradio_demo",
+      "mode": "0o644",
+      "bytes": 62,
+      "sha256": "dfaedd4f797921d6e94cd792ea5f3181845087e817717a44a079db66e4def4a6"
+    },
+    {
+      "path": "etc/init.d/nradio-demo",
+      "mode": "0o755",
+      "bytes": 835,
+      "sha256": "9b185d9fb47ffd19099d37747946b5094a99e06550b96c4732f97101ea48782e"
+    },
+    {
+      "path": "usr/lib/lua/luci/controller/nradio_adv/nradio_demo.lua",
+      "mode": "0o644",
+      "bytes": 739,
+      "sha256": "d9723190870726bd958b41295308a031f0ebaef9a5f36c367d53602f8d5c4925"
+    },
+    {
+      "path": "usr/lib/lua/luci/model/cbi/nradio_adv/nradio_demo.lua",
+      "mode": "0o644",
+      "bytes": 875,
+      "sha256": "75037565d3ed2bbbf2b79b7df51267f4c232b3c791b63497a97f0f8a8133480b"
+    },
+    {
+      "path": "usr/libexec/nradio-demo/worker.sh",
+      "mode": "0o755",
+      "bytes": 401,
+      "sha256": "de2e221d2822357a36886bd9fd8bae14b229acb5d6234cdabadab26171c9b9aa"
+    }
+  ],
+  "elf_files_require_runtime_abi_check": [],
+  "scope": "Host structure/metadata only; not device validation"
+}

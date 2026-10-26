@@ -1,0 +1,76 @@
+{
+  "spec_version": "1.3",
+  "review_date": "2026-10-26",
+  "scope": "Agent plugin creation, build, inspection and local testing; official online publication excluded",
+  "entry": "AGENTS.md",
+  "coverage": [
+    "task scope and input resolution",
+    "model/firmware and implementation fingerprint",
+    "architecture/libc/kernel ABI and SDK selection",
+    "dependency closure and resource budget",
+    "file ownership, packaging and metadata consistency",
+    "LuCI route discovery and iframe integration",
+    "HTTP/ubus schema and error namespaces",
+    "session, token, response type and stale-cache detection",
+    "serialized mutations, bounded waits and retry decisions",
+    "pre-change snapshots, state preservation, rollback and shared dependencies",
+    "configuration migration and maintenance-script failure semantics",
+    "positive/negative test matrix and evidence-based pass/fail/not_run reporting",
+    "local import versus official cloud publication",
+    "example limitations, generic checker scope and provenance of historical results",
+    "single metadata source and repeatable project generation",
+    "payload binary-byte preservation, permission mapping and native architecture guard",
+    "read-only bounded host archive inspection before upload",
+    "concrete opkg install/debug/update/remove workflow",
+    "portable tooling regressions and pure-backend plugin scope"
+  ],
+  "unresolved_evidence": [
+    {
+      "item": "Real appcenter local import format and registration behavior",
+      "status": "not_run",
+      "next_action": "Run actual import/open/update/uninstall on an authorized test device; keep package and state evidence.",
+      "blocks_plugin_creation": false
+    },
+    {
+      "item": "Full real installation, config migration, service lifecycle and rollback",
+      "status": "not_run",
+      "next_action": "Complete per-firmware test matrix; do not reuse syntax/noaction passes.",
+      "blocks_plugin_creation": false
+    },
+    {
+      "item": "Vendor SDK, native programs and kernel-module compatibility",
+      "status": "not_run",
+      "next_action": "Use matching vendor SDK and verify each native dependency/ABI.",
+      "applicable_when": "Native compilation or kernel modules are required; does not block script/Lua plugin creation.",
+      "blocks_script_only_creation": false,
+      "blocks_native_compilation_without_compatible_toolchain": true
+    },
+    {
+      "item": "Device execution of v1.1 generic preflight checker",
+      "status": "not_run",
+      "next_action": "Run new checker on target; local regression uses mocked opkg/lua and is not device certification.",
+      "blocks_plugin_creation": false
+    }
+  ],
+  "corrections": [
+    "Expanded concrete upgrade/recovery and async decision rules.",
+    "Removed demo paths and hard-coded package identity from device preflight.",
+    "Added noaction force-reinstall, failure propagation and before/after status comparison.",
+    "Fixed generated manifest reference to validation-result.json.",
+    "Kept historical device tests separate from revised-tool local regression.",
+    "Removed official online publication from current acceptance criteria.",
+    "Added plugin.json, a new-project generator, SDK recipe generation and a generic payload packager.",
+    "Removed automatic CRLF rewriting of binary resources.",
+    "Added strict read-only host IPK inspection and 24 repeatable local tool regressions."
+  ],
+  "subsequent_storage_update": "max-extroot-result.json; does not upgrade historical plugin test results",
+  "out_of_scope": [
+    "official_online_publication",
+    "cloud_catalog_schema",
+    "store_review_and_publishing_accounts"
+  ],
+  "tool_regression_cases": 24,
+  "construction_entry": "tools/new-plugin.py",
+  "metadata_source": "example/plugin.json",
+  "host_validation_entry": "tools/inspect-ipk.py"
+}
