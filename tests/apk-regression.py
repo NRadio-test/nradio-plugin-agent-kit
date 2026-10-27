@@ -100,6 +100,8 @@ with tempfile.TemporaryDirectory(prefix='apk-regression-', dir=scratch) as tempo
     subprocess.run([sys.executable,str(generated/'tools/build-apk.py')],cwd=generated,check=True,capture_output=True)
     subprocess.run([sys.executable,str(generated/'tools/inspect-apk.py'),str(generated/'dist/luci-app-native-demo-0.1.0-r1.apk')],cwd=generated,check=True,capture_output=True)
     assert (generated/'AGENTS.md').exists()
+    assert (generated/'APK-DEVELOPMENT.md').read_bytes()==(kit/'APK-DEVELOPMENT.md').read_bytes()
+    assert json.loads((generated/'distribution-policy.json').read_text(encoding='utf-8'))['new_plugin_format']=='apk'
     passed('generated_project_self_contained_apk_cli_and_agent_guide')
 
 report={'checked_at_utc':datetime.now(timezone.utc).isoformat(),'scope':'Local APK v2 helper regression only; no device install','cases':cases,

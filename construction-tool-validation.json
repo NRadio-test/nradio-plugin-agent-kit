@@ -1,5 +1,5 @@
 {
-  "observed_at_utc": "2026-10-27T02:23:07.379876+00:00",
+  "observed_at_utc": "2026-10-27T08:48:51.396650+00:00",
   "scope": "Local Python tooling and archive regression; no device install performed",
   "cases": [
     {
@@ -101,7 +101,7 @@
   ],
   "tool_sha256": {
     "build.py": "e4c0da1f17f7f7485cec94a060f64366766fbeb01f69b922cdbca971138ed3db",
-    "new-plugin.py": "a96af059321083c750231bfe86533cf4ba814aebaf979a6714c7faabdc737de7",
+    "new-plugin.py": "2eaca5bcc613df3e2e1c3772f9e844ff205e481beee3c4e2ad7f9230457e1351",
     "inspect-ipk.py": "b59198e320df8f59b762c2a4791012ca559149fd8e04765821a7919a0f27409a"
   },
   "device_preflight_sample_unchanged": true,

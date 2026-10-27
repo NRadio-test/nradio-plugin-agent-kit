@@ -1,6 +1,6 @@
 {
   "date": "2026-10-27",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "scope": "ultra 3.0 preview only",
   "agent_guide": "AGENTS.md",
   "implemented_tools": [
@@ -50,5 +50,15 @@
     "next_action": "Vendor appcenter APK backend support, then re-test official local import/ownership/iframe/update/uninstall"
   },
   "known_template_gap": "Full upgrade state combinations are a product implementation requirement, not certified by the heartbeat template",
-  "legacy_support_location": "https://github.com/NRadio-test/nradio-plugin-agent-kit/tree/main"
+  "legacy_support_location": "https://github.com/NRadio-test/nradio-plugin-agent-kit/tree/main",
+  "development_direction": {
+    "new_plugin_format": "apk",
+    "formal_build": "matching_vendor_apk_sdk",
+    "current_helper": "local unsigned APK v2 development only",
+    "agent_guide": "APK-DEVELOPMENT.md",
+    "machine_readable_policy": "distribution-policy.json",
+    "generator_copies_policy_and_apk_guide": true,
+    "new_device_testing_for_this_document_update": false,
+    "historical_device_checks": "Unchanged; see validation-result.json for the exact tested artifacts and kit version"
+  }
 }

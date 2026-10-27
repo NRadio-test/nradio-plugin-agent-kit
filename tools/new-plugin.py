@@ -67,6 +67,8 @@ def main():
         shutil.copy2(KIT / 'tools' / name, target / 'tools' / name)
     shutil.copy2(KIT / 'LICENSE', target / 'LICENSE')
     shutil.copy2(KIT / 'AGENTS.md', target / 'AGENTS.md')
+    for name in ('APK-DEVELOPMENT.md', 'distribution-policy.json'):
+        shutil.copy2(KIT / name, target / name)
     builder = runpy.run_path(str(KIT / 'tools/build.py'))
     config = builder['load_config'](target)
     (target / 'Makefile').write_text(builder['sdk_text'](target, config), encoding='utf-8')

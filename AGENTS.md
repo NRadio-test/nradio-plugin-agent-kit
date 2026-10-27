@@ -1,12 +1,16 @@
 # NRadio ultra 3.0 插件 Agent 执行规范
 
-规范版本：3.0.0。复核日期：2026-10-27（Asia/Shanghai）。Git 分支：`3`。
+规范版本：3.0.1。更新日期：2026-10-27（Asia/Shanghai）。Git 分支：`3`。
 
 本分支只适配实测 **ultra / HC-WT9500 / 3.0.0.n0.c1-preview**。2.x（包括 max 2.3.3）的指南保留在仓库 `main` 分支；不要把本分支作为尚未发布的其他型号 3.0 固件的兼容证明。
 
 目标是让编码 Agent 制作插件源码、可复现软件包，并完成授权范围内的本地调试。**官方商店在线上架仍不在范围内**，不追问上架账号、云目录或审核资料。商店本地接入入口仍为 `/cgi-bin/luci/nradioadv/system/appcenter`。
 
-本预览版存在已实测的平台边界：系统包在 APK 数据库中，兼容 opkg 的数据库为空；商店本地导入仍交给 opkg。旧 IPK 的正常依赖预检失败；原生 APK 本地导入返回 code=14。**可制作并通过原生 APK 直接调试，不得承诺已兼容官方商店导入。**不修改官方商店或包数据库来伪造通过。
+**已确认的开发方向：用户转述技术反馈，3.0 后续按 APK 开发。新插件统一交付 `.apk`，安装、依赖、版本查询、文件归属、升级和卸载统一走 APK；不再为新插件设计 opkg/IPK 双轨安装，也不以修复跨数据库依赖识别为前置工作。**这项方向确认不等于已取得最终 SDK、签名规范或完成商店改造。
+
+APK 实施细则见 [APK-DEVELOPMENT.md](APK-DEVELOPMENT.md)，结构化决策见 [distribution-policy.json](distribution-policy.json)。执行时同时遵守本文件与 APK 细则；本文件保留设备、LuCI、服务和商店契约。
+
+历史实测基线仍保留：该预览版系统包在 APK 数据库中，兼容 opkg 未登记系统包；商店本地导入仍交给 opkg。旧 IPK 的正常依赖预检失败；原生 APK 本地导入返回 code=14。**现在按 APK 制作并直接调试；商店未来支持情况必须在更新后的固件上重测。**不修改官方商店或包数据库来伪造通过，也不把历史失败说成 APK 方向尚未确定。
 
 本文件可独立供 Agent 使用；缺少随包工具时按契约实现，不声称运行过缺失工具。先确定实际功能、固件、包管理路径和所需验证层级；已授权步骤持续执行，不另设重复确认。只缺少影响实现的关键输入时澄清，同时推进独立工作。
 
@@ -101,11 +105,11 @@ API schema/页面相同，只能证明这些契约相同，不能证明新内核
 
 ## 5 构建和安装路径的决策
 
-1. 纯 Shell/Lua/UI/资源：可用本分支的 `build-apk.py` 制作明确标记的无签名 APK v2 兼容包，架构 noarch。它已对当前 apk-tools 3.0.5 做直接安装验证，不代表所有未来 3.x 固件接受此格式。
-2. 正式 SDK、ELF、kmod、复杂依赖、特殊权限/链接：使用**匹配厂商固件的 SDK**，保留源码提交、工具链、内核 ABI、依赖版本和构建命令。SDK 原生 APK v3/ADB 不由简易 APK v2 验包器解析。
+1. 正式交付优先使用**匹配厂商固件的 APK SDK**；原生 ELF、kmod、复杂依赖、特殊权限/链接必须使用该路径。记录 SDK/源码提交、工具链、内核 ABI、依赖版本和构建命令；当前未提供并实测该 SDK，不能声称已有正式构建认证。
+2. SDK 尚缺且载荷仅为纯 Shell/Lua/UI/资源时，可用本分支 `build-apk.py` 制作明确标记的无签名 APK v2 兼容包，架构 noarch，用于本地开发调试。它已在当前 apk-tools 3.0.5 上直接安装验证，不代表所有未来 3.x 固件接受此格式。`apk-tools 3.x` 是工具版本，不等于最终必须采用 APK v3；格式与签名仍由匹配 SDK/技术规范确定。SDK 的 APK v3/ADB 不能交给此简易 v2 验包器判断有效性。
 3. SDK 缺少时继续完成脚本/UI、源码与静态检查；未编译/未验证的原生部分明确 not_run。不要拿通用 ARM64/glibc 或旧 2.x musl 二进制冒充兼容。
 4. 依赖必须由实际使用的包管理器求解；不得通过清空 Depends、force-depends、force-overwrite、补写数据库或覆盖基础库修复跨数据库问题。
-5. 原生 APK 安装/升级/卸载走 apk；不得安装后用 opkg remove。当前商店路径另记 fail，不能伪造商店卡片补齐。
+5. 新插件只交付 APK，不生成供 ultra 3.0 安装的 IPK。原生 APK 安装/升级/卸载走 apk；不得安装后用 opkg remove。历史商店路径保留 fail，新固件没有重测时记 not_run，不能伪造商店卡片补齐。
 6. 检查 ELF 时只读取头、interpreter、NEEDED 和 CPU 要求，不执行待检程序。纯脚本 helper 禁止 ELF，原生代码不能用 noarch/all 回避。
 
 资源核算含包压缩体积、展开文件/元数据占用、缺失依赖、升级时新旧文件共存、RAM 解包峰值与服务峰值。source_bytes 不等于文件系统实际占用。/tmp 是 RAM；日志/数据必须有上限，服务重启、异常恢复次数和停止超时有界。
@@ -130,8 +134,9 @@ API schema/页面相同，只能证明这些契约相同，不能证明新内核
 - 维护脚本区分镜像构建根与实际设备；不要假定 APK 与 IPK 的环境/事件完全相同。脚本可重复执行。随附兼容打包器把 preinst/postinst 分别映射到安装和升级事件，prerm/postrm 映射到卸载前后；SDK 包以相应 SDK 包装器为准。
 - 升级保留用户配置，并显式处理必要的数据迁移和失败回退。
 - 卸载停止本应用，清理本应用开机项和临时文件；配置保留政策与任务要求一致。
-- Shell 使用 LF 和正确解释器，执行文件模式 0755，普通文件通常 0644。归档不含绝对路径、`..` 或逃逸链接。
+- Shell 使用 LF 和正确解释器，执行文件模式 0755，普通文件通常 0644。归档包含所需父目录，不依赖设备预先存在目录；不含绝对路径、`..` 或逃逸链接。真实安装后逐项核对载荷、模式与 APK 归属，包记录或退出码为成功不能替代文件完整性验证。
 - 配置写操作遵守登录会话和 CSRF 检查；后端验证输入。不要将用户值直接拼接进 Shell。
+- 管理器、下载器和代理核心分别记录兼容性。内核版本达到门槛不代表存在所需 BTF、内核配置、模块或可加载回调；只有实际需要这些功能的插件才要求相应探针，不能为所有 Lua/UI 插件增加 eBPF 门槛。
 
 ### 升级、服务状态和维护脚本
 
@@ -259,7 +264,7 @@ APPSTORE 目录 code:
 
 ### 兼容 opkg / appcenter 路径
 
-旧 IPK（libc、luci-base 依赖完整）在当前正常 opkg noaction 中失败，因为这些系统包仅存在于 APK 数据库。输出末尾可能伴随 architectures configured 错误；不要凭这行就改包架构或加忽略架构参数。
+旧 IPK（libc、luci-base 依赖完整）在该历史预览样机的正常 opkg noaction 中失败，因为这些系统包未登记于 opkg 数据库。输出末尾可能伴随 architectures configured 错误；不要凭这行就改包架构或加忽略架构参数。技术方向现已选定 APK，此项保留为迁移背景，不再要求新插件实现跨数据库桥接。
 
 对原生 APK 调用官方 appcenter local 已实测：code=14，errro_detail 含 opkg 不能安装该 .apk。该次失败后 /tmp 输入文件也已消失；主机保留原件，超时先核对状态，不盲重试。未验证 APK 外包归档或原生 APK 的商店 iframe/升级/卸载成功。
 
@@ -267,7 +272,7 @@ APPSTORE 目录 code:
 
 旧 IPK 负向样包在 `tests/fixtures/legacy-demo.ipk`；固件问题及建议集中在 `firmware-feedback.json`。测试用原生 APK 和对应源码在 `validation/artifacts/`、`validation/probe-source/`，可用 `tests/apk-regression.py` 重建两个实测摘要。
 
-保留正确的 LuCI 主入口与独立命名空间，等待平台具备原生 APK 接入能力后再验官方本地导入。平台限制不阻止源码、原生 APK、直接 LuCI 页面和后端开发；也不应通过手改 UCI、缓存或 callback 制造登记。
+保留正确的 LuCI 主入口与独立命名空间，直接 APK 开发继续执行，待平台具备 APK 商店接入能力后再验官方本地导入。未来支持已确定的只有 APK 方向，商店接口、包签名、SDK 格式和其他型号支持没有新增实测；不通过手改 UCI、缓存或 callback 制造登记。
 
 ## 10 实施顺序与验收门槛
 
@@ -355,7 +360,7 @@ apk --no-network del <package>
 
 页面 404 时核对安装归属、controller 路径、守卫条件及缓存。维护脚本可使 /tmp/luci-indexcache 失效，由正常请求重建；不手改 /tmp/luci-indexpath，不默认重启整机/uhttpd。
 
-SDK Makefile 在 example/Makefile，生成器也会写到新工程。它只是脚本/预编译载荷配方，Build/Compile 为空；实际交叉编译、SDK APK v3/ADB、签名与完整生命周期包装均需匹配 SDK，当前未实测。
+SDK Makefile 在 example/Makefile，生成器也会写到新工程。它是待迁移的配方草稿，Build/Compile 为空，旧 hook 还含 IPKG_INSTROOT；文件存在不代表已适配厂商 APK SDK。按 APK-DEVELOPMENT.md 审核 SDK 的打包后端、架构转换、保护路径、生命周期包装器与 hook 环境后再使用；实际交叉编译、签名和完整 SDK 生命周期当前未实测。
 
 ```sh
 python tests/toolchain-regression.py

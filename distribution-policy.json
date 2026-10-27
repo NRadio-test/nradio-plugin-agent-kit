@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "kit_version": "3.0.1",
+  "updated_date": "2026-10-27",
+  "branch": "3",
+  "decision_source": "User-relayed technical feedback: subsequent 3.0 development will use APK",
+  "decision_status": "confirmed_direction",
+  "new_plugin_format": "apk",
+  "lifecycle_package_manager": "apk",
+  "new_plugin_ipk_delivery": false,
+  "opkg_apk_database_bridge_required_for_new_plugins": false,
+  "formal_build": {
+    "method": "matching_vendor_apk_sdk",
+    "sdk_release": null,
+    "sdk_available_and_validated": false,
+    "package_format_version": null,
+    "signing_specification": null,
+    "dependency_repository_compatibility_validated": false
+  },
+  "local_development_helper": {
+    "tool": "tools/build-apk.py",
+    "format": "unsigned-apkv2-compat",
+    "payload": "pure_shell_lua_ui_resources_only",
+    "apk_architecture": "noarch",
+    "requires_source_review_and_sha256_match": true,
+    "native_elf_kmod_or_complex_dependencies": "matching_vendor_sdk_required",
+    "production_signing": "not_supported"
+  },
+  "observed_firmware": {
+    "model": "HC-WT9500",
+    "firmware": "3.0.0.n0.c1-preview",
+    "apk_tools": "3.0.5",
+    "direct_apk_lifecycle": "pass_for_recorded_compatprobe_artifacts",
+    "appcenter_apk_import": "fail_code_14",
+    "evidence": "validation-result.json"
+  },
+  "subsequent_firmware": {
+    "apk_direction": "confirmed",
+    "sdk_format_signing_and_appcenter_implementation": "not_yet_verified",
+    "device_validation": "not_run"
+  },
+  "scope": {
+    "device": "ultra_only",
+    "other_models": "not_validated",
+    "legacy_2x_branch": "main",
+    "official_online_publication": "out_of_scope"
+  }
+}
