@@ -1,0 +1,99 @@
+{
+  "checked_at_utc": "2026-10-27T02:25:15.565428+00:00",
+  "scope": "Local APK v2 helper regression only; no device install",
+  "cases": [
+    {
+      "case": "byte_reproducible_build",
+      "status": "pass"
+    },
+    {
+      "case": "native_metadata_architecture_version_and_dependencies",
+      "status": "pass"
+    },
+    {
+      "case": "apk_lifecycle_hook_mapping",
+      "status": "pass"
+    },
+    {
+      "case": "reject_missing_embedded_per_file_checksum_despite_valid_datahash",
+      "status": "pass"
+    },
+    {
+      "case": "reject_parent_traversal_without_extraction",
+      "status": "pass"
+    },
+    {
+      "case": "reject_absolute_payload_path",
+      "status": "pass"
+    },
+    {
+      "case": "reject_duplicate_payload_members",
+      "status": "pass"
+    },
+    {
+      "case": "reject_duplicate_metadata_key",
+      "status": "pass"
+    },
+    {
+      "case": "reject_duplicate_dependency",
+      "status": "pass"
+    },
+    {
+      "case": "reject_unverified_native_architecture",
+      "status": "pass"
+    },
+    {
+      "case": "reject_nonexecutable_shebang",
+      "status": "pass"
+    },
+    {
+      "case": "reject_ELF_in_noarch_helper",
+      "status": "pass"
+    },
+    {
+      "case": "reject_trailing_data",
+      "status": "pass"
+    },
+    {
+      "case": "reject_truncated_gzip",
+      "status": "pass"
+    },
+    {
+      "case": "enforce_expansion_limit",
+      "status": "pass"
+    },
+    {
+      "case": "reject_APKv3_instead_of_misidentifying_as_APKv2",
+      "status": "pass"
+    },
+    {
+      "case": "reject_payload_digest_mismatch",
+      "status": "pass"
+    },
+    {
+      "case": "binary_resource_bytes_preserved",
+      "status": "pass"
+    },
+    {
+      "case": "builder_requires_SDK_for_native_payloads",
+      "status": "pass"
+    },
+    {
+      "case": "rebuild_exact_device_tested_artifact_0.1.0",
+      "status": "pass"
+    },
+    {
+      "case": "rebuild_exact_device_tested_artifact_0.2.0",
+      "status": "pass"
+    },
+    {
+      "case": "generated_project_self_contained_apk_cli_and_agent_guide",
+      "status": "pass"
+    }
+  ],
+  "tool_sha256": {
+    "build-apk.py": "078c82663fb7dd5d468a97b21aeb459c982e54cb888b8d2220e99dffd38f84fd",
+    "inspect-apk.py": "203b478efbc3c50763189ce15ed3851c8c16576a17406e8fc725eff53071f9cf",
+    "device-dry-run-apk.sh": "8a29b4e50aa6956bee381ad6aadf6fdea571d96676b7a266c4e799c2505df827"
+  }
+}

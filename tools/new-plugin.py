@@ -62,14 +62,16 @@ def main():
             destination.write_bytes(data)
     (target / 'plugin.json').write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     (target / 'tools').mkdir()
-    for name in ('build.py', 'inspect-ipk.py', 'device-dry-run.sh', 'syntax-check.lua', 'preflight.sh'):
+    for name in ('build.py', 'inspect-ipk.py', 'device-dry-run.sh', 'syntax-check.lua', 'preflight.sh',
+                 'build-apk.py', 'inspect-apk.py', 'device-dry-run-apk.sh'):
         shutil.copy2(KIT / 'tools' / name, target / 'tools' / name)
     shutil.copy2(KIT / 'LICENSE', target / 'LICENSE')
+    shutil.copy2(KIT / 'AGENTS.md', target / 'AGENTS.md')
     builder = runpy.run_path(str(KIT / 'tools/build.py'))
     config = builder['load_config'](target)
     (target / 'Makefile').write_text(builder['sdk_text'](target, config), encoding='utf-8')
     print(json.dumps({'project': str(target), 'package': cfg['package'], 'route': cfg['luci_route'],
-                      'next': 'Implement feature in root/, then python tools/build.py from project root',
+                      'next': 'ultra 3.0: implement root/, then python tools/build-apk.py and inspect-apk.py; legacy IPK is not a compatible default',
                       'template_policy': 'Minimal example only; complete product lifecycle before release'}, ensure_ascii=True))
 
 if __name__ == '__main__':

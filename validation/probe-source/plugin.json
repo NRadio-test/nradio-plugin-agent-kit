@@ -1,0 +1,26 @@
+{
+  "package": "luci-app-nradio-compatprobe",
+  "version": "0.2.0",
+  "release": 1,
+  "architecture": "all",
+  "title": "NRadio Compat Probe",
+  "description": "NRadio Compat Probe plugin",
+  "maintainer": "Project maintainer",
+  "section": "luci",
+  "license": "MIT",
+  "depends": [
+    "libc",
+    "luci-base"
+  ],
+  "conffiles": [
+    "/etc/config/nradio_compatprobe"
+  ],
+  "executable_files": [
+    "etc/init.d/nradio-compatprobe",
+    "usr/libexec/nradio-compatprobe/worker.sh"
+  ],
+  "uci_name": "nradio_compatprobe",
+  "service_name": "nradio-compatprobe",
+  "luci_route": "nradioadv/system/nradio_compatprobe",
+  "local_bundle": true
+}

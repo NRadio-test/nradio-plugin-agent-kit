@@ -1,0 +1,31 @@
+=== Package control ===
+Package: luci-app-nradio-demo
+Version: 1.0.0-1
+Architecture: all
+Maintainer: Example developer
+Section: luci
+Priority: optional
+Depends: libc, luci-base
+License: MIT
+Installed-Size: 2912
+Description: Lightweight NRadio plugin development example
+=== Maintenance script syntax (not executed) ===
+Shell syntax OK: /tmp/nradio-syntax.cHoHjN/control/postinst
+Shell syntax OK: /tmp/nradio-syntax.cHoHjN/control/prerm
+Shell syntax OK: /tmp/nradio-syntax.cHoHjN/control/postrm
+=== Payload script syntax ===
+Shell syntax OK: /tmp/nradio-syntax.cHoHjN/data/usr/libexec/nradio-demo/worker.sh
+Lua syntax OK: /tmp/nradio-syntax.cHoHjN/data/usr/lib/lua/luci/model/cbi/nradio_adv/nradio_demo.lua
+Lua syntax OK: /tmp/nradio-syntax.cHoHjN/data/usr/lib/lua/luci/controller/nradio_adv/nradio_demo.lua
+Shell syntax OK: /tmp/nradio-syntax.cHoHjN/data/etc/init.d/nradio-demo
+=== Installed state before dry-run ===
+=== opkg noaction ===
+No packages removed.
+Unknown package 'luci-app-nradio-demo'.
+Collected errors:
+ * pkg_hash_check_unresolved: cannot find dependency libc for luci-app-nradio-demo
+ * pkg_hash_check_unresolved: cannot find dependency luci-base for luci-app-nradio-demo
+ * pkg_hash_fetch_best_installation_candidate: Packages for luci-app-nradio-demo found, but incompatible with the architectures configured
+ * opkg_install_cmd: Cannot install package luci-app-nradio-demo.
+=== Installed state after dry-run ===
+DEVICE_DRY_RUN_EXIT=255

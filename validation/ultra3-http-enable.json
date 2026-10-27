@@ -1,0 +1,15 @@
+{
+  "mode": "enable",
+  "anonymous_status": 403,
+  "anonymous_result_exposed": false,
+  "page_status": 200,
+  "cbi_expected_fields": true,
+  "api_status": 200,
+  "api": {
+    "result": {
+      "enabled": "1",
+      "heartbeat": "2026-10-27T02:08:02Z",
+      "code": 0
+    }
+  }
+}

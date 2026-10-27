@@ -1,0 +1,17 @@
+===VALIDATED_NATIVE_APK_SHA256===
+7ea7acb3c4262fba85f5af59ff6bc7cf6e6f605ee90d7459d32c73c0f887b8ff  /tmp/luci-app-nradio-compatprobe-0.1.0-r1.apk
+===PACKAGE_DATABASE_BEFORE===
+5d10244b01db84f1b99862c5fe3ba86c338d92fe72108edc7e555a1ca868329b  /lib/apk/db/installed
+00d0620c31032e4b01a69b6b810d7f1c710be4610d0cf3e7dc34f106f0095658  /etc/apk/world
+===APPCENTER_LOCAL_APK===
+{
+	"errro_detail": "No packages removed.\nCollected errors:\n * opkg_install_cmd: Cannot install package /tmp/luci-app-nradio-compatprobe-0.1.0-r1.apk.\nUnknown package '/tmp/luci-app-nradio-compatprobe-0.1.0-r1.apk'.\n",
+	"file_name": "luci-app-nradio-compatprobe-0.1.0-r1.apk",
+	"code": 14
+}
+===OWN_PACKAGE_STATE===
+PACKAGE_EXISTS_EXIT=1
+===PACKAGE_DATABASE_AFTER===
+5d10244b01db84f1b99862c5fe3ba86c338d92fe72108edc7e555a1ca868329b  /lib/apk/db/installed
+00d0620c31032e4b01a69b6b810d7f1c710be4610d0cf3e7dc34f106f0095658  /etc/apk/world
+===APPCENTER_LOCAL_END===

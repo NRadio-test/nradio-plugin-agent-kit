@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -n "$IPKG_INSTROOT" ] && exit 0
+/etc/init.d/nradio-compatprobe stop
+/etc/init.d/nradio-compatprobe disable
+exit 0

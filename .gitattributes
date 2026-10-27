@@ -8,4 +8,5 @@ Makefile text eol=lf
 example/control/* text eol=lf
 SHA256SUMS text eol=lf
 *.ipk binary
+*.apk binary
 *.tar.gz binary

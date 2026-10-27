@@ -1,0 +1,66 @@
+===SERVICE_BEFORE_UPGRADE===
+{
+	"nradio-compatprobe": {
+		"instances": {
+			"instance1": {
+				"running": true,
+				"pid": 32528,
+				"command": [
+					"/bin/sh",
+					"/usr/libexec/nradio-compatprobe/worker.sh",
+					"60"
+				],
+				"term_timeout": 5,
+				"respawn": {
+					"threshold": 3600,
+					"timeout": 5,
+					"retry": 5
+				}
+			}
+		}
+	}
+}
+===CONFIG_BEFORE_UPGRADE===
+6ca9b9232af523affbd4c332d6257cdbec26396baf973f477ab68ca66c21480e  /etc/config/nradio_compatprobe
+===UPGRADE_WITHOUT_FORCE_DEPENDENCIES===
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/targets/mediatek/filogic/packages/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/base/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/mtk_openwrt_feed/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/packages/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/routing/packages.adb: No such file or directory
+(1/1) Upgrading luci-app-nradio-compatprobe (0.1.0-r1 -> 0.2.0-r1)
+  Installing file to etc/config/nradio_compatprobe.apk-new
+  Executing luci-app-nradio-compatprobe-0.2.0-r1.post-upgrade
+OK: 72.8 MiB in 523 packages
+===CONFIG_AFTER_UPGRADE===
+6ca9b9232af523affbd4c332d6257cdbec26396baf973f477ab68ca66c21480e  /etc/config/nradio_compatprobe
+nradio_compatprobe.main=main
+nradio_compatprobe.main.enabled='1'
+nradio_compatprobe.main.interval='60'
+===NEW_DEFAULT_CONFIG_CANDIDATE===
+-rw-r--r--    1 root     root            62 Jan  1  1970 /etc/config/nradio_compatprobe.apk-new
+===INSTALLED_OWNER===
+/usr/lib/lua/luci/controller/nradio_adv/nradio_compatprobe.lua is owned by luci-app-nradio-compatprobe-0.2.0-r1
+===SERVICE_AFTER_UPGRADE===
+{
+	"nradio-compatprobe": {
+		"instances": {
+			"instance1": {
+				"running": true,
+				"pid": 27149,
+				"command": [
+					"/bin/sh",
+					"/usr/libexec/nradio-compatprobe/worker.sh",
+					"60"
+				],
+				"term_timeout": 5,
+				"respawn": {
+					"threshold": 3600,
+					"timeout": 5,
+					"retry": 5
+				}
+			}
+		}
+	}
+}
+===UPGRADE_PRESERVED_USER_CONFIGURATION===

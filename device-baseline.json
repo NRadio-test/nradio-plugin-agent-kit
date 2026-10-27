@@ -1,37 +1,108 @@
 {
-  "date": "2026-10-26",
+  "observed_at_utc": "2026-10-27T02:23:06.539315+00:00",
+  "date": "2026-10-27",
   "timezone": "Asia/Shanghai",
-  "scope": "Observed firmware instances only; not a vendor compatibility guarantee",
-  "devices": [
-    {
-      "alias": "ultra",
-      "model": "HC-WT9500",
-      "firmware": "2.3.1.n0.c1",
-      "overlay_total_kib": 4191232,
-      "overlay_available_kib": 3795024
-    },
-    {
-      "alias": "max",
-      "model": "HC-WT9303",
-      "firmware": "2.3.3.n0.c1",
-      "overlay_total_kib": 3328,
-      "overlay_available_kib": 2900
-    }
-  ],
-  "common": {
-    "openwrt": "21.02-SNAPSHOT",
-    "target": "mediatek/mt7987",
+  "kit_version": "3.0.0",
+  "branch_scope": "ultra 3.0 preview only; legacy 2.x remains on main",
+  "device": {
+    "alias": "ultra",
+    "kernel": "6.12.94",
+    "hostname": "nradio.in",
+    "system": "ARMv8 Processor rev 4",
+    "model": "HC-WT9500",
     "board_name": "HCMT7987-SNSD",
-    "kernel": "5.4.281",
-    "architecture": "aarch64_cortex-a53",
-    "libc_package": "1.2.3-3",
-    "appcenter_package": "1.0-20250207",
-    "luci_appcenter_package": "git-26.257.38817-208f0a4-1"
+    "rootfs_type": "squashfs",
+    "release": {
+      "distribution": "OpenWrt",
+      "version": "25.12-SNAPSHOT",
+      "firmware_url": "https://downloads.openwrt.org/",
+      "revision": "3.0.0.n0.c1-preview",
+      "target": "mediatek/filogic",
+      "description": "OpenWrt 25.12-SNAPSHOT 3.0.0.n0.c1-preview",
+      "builddate": "1793015750"
+    }
   },
-  "identical_on_both_sha256": {
-    "/usr/sbin/appcenter": "c153e0b56aecb88d7a4e28bc729dbb624e5fbab3fa32fa6b2501e5200b82002f",
+  "package_managers": {
+    "native": {
+      "command": "apk",
+      "version": "3.0.5",
+      "compiled_default_arch": "aarch64",
+      "database": "/lib/apk/db/installed",
+      "packages": {
+        "appcenter": {
+          "version": "1.0-r20250207",
+          "architecture": "aarch64_cortex-a53"
+        },
+        "kernel": {
+          "version": "6.12.94~0df60b4031027d285ed2d2febd1ad1a5-r1",
+          "architecture": "aarch64_cortex-a53"
+        },
+        "libc": {
+          "version": "1.2.5-r5",
+          "architecture": "aarch64_cortex-a53"
+        },
+        "lua": {
+          "version": "5.1.5-r11",
+          "architecture": "aarch64_cortex-a53"
+        },
+        "luci-app-nradio-appcenter": {
+          "version": "26.266.54323~006700c-r1",
+          "architecture": "noarch"
+        },
+        "luci-base": {
+          "version": "26.266.54323~006700c-r1",
+          "architecture": "aarch64_cortex-a53"
+        },
+        "luci-lib-nixio": {
+          "version": "26.266.54323~006700c-r1",
+          "architecture": "aarch64_cortex-a53"
+        },
+        "opkg": {
+          "version": "2025.11.05~80503d94-r1",
+          "architecture": "aarch64_cortex-a53"
+        }
+      }
+    },
+    "legacy": {
+      "command": "opkg",
+      "architectures": [
+        "all",
+        "noarch",
+        "aarch64_cortex-a53"
+      ],
+      "system_package_database": "absent/empty",
+      "old_ipk_dependency_simulation": "fail"
+    }
+  },
+  "runtime": {
+    "lua": "5.1.5 double int32",
+    "module_require_checks": {
+      "nixio": "pass",
+      "luci.dispatcher": "pass",
+      "luci.model.uci": "pass",
+      "luci.cbi": "pass",
+      "luci.jsonc": "pass"
+    },
+    "elf_interpreter": "/lib/ld-musl-aarch64.so.1",
+    "logger": true,
+    "logread": false
+  },
+  "storage": {
+    "overlay_device": "/dev/mmcblk0p1",
+    "overlay_type": "f2fs",
+    "overlay_total_KiB": 4191232,
+    "data_device": "/dev/mmcblk0p2",
+    "data_mount": "/mnt/storage/data",
+    "measure_free_space_each_time": true
+  },
+  "implementation_sha256": {
+    "/usr/sbin/appcenter": "49238b66134a882e35de4a166b0f84bd698da774d2f1b5454a792bb64c509df5",
     "/usr/lib/lua/luci/controller/nradio_adv/appcenter.lua": "61a61978aa0ef763f84bb6f39fd7bbeec9758c93d495cf05cd7c710335504b5f",
-    "/usr/lib/lua/luci/view/nradio_appcenter/appcenter.htm": "34880d1a070d1850c4d1d89bd2544b657f1ac746499e28d318261ecadfff5bbc"
+    "/usr/lib/lua/luci/view/nradio_appcenter/appcenter.htm": "34880d1a070d1850c4d1d89bd2544b657f1ac746499e28d318261ecadfff5bbc",
+    "/usr/lib/lua/luci/dispatcher.lua": "2c7300c19305faf1b586cb1896a2642ed117b31c76f7d7c06bf560ec3a1a6d37",
+    "/usr/lib/lua/luci/nradio.lua": "a0de7eca73f47a4afe2bcc3299ace17ad60c175fa8e82fed19fe609cd90d7875",
+    "/bin/opkg": "4d46e0be6f5d1236c7e8a3517eee4f68be8490c37401cf0b38375b5268b1f731",
+    "/etc/init.d/appcenter": "64888ece49519c36890bb503b777e3b112cfbe6c7b47d4c4381a87acd20fa0f8"
   },
   "ubus_methods": [
     "callback",
@@ -44,55 +115,11 @@
     "appstore",
     "local"
   ],
-  "official_reference_package": {
-    "url": "https://www.appstore.vapyun.com/nradio-appstore/aarch64_cortex-a53/FileBrowser/1.0.2/luci-app-nradio-filebrowser_git-25.317.10927-d50d646-1_all.ipk",
-    "size": 1912,
-    "md5": "aacfa33836a0d0ff1e7fe7f0f036e0f3",
-    "outer_format": "gzip-compressed tar",
-    "redistributed": false
-  },
-  "source_locations": {
-    "/usr/lib/lua/luci/controller/nradio_adv/appcenter.lua": {
-      "sha256": "61a61978aa0ef763f84bb6f39fd7bbeec9758c93d495cf05cd7c710335504b5f",
-      "functions": {
-        "function index()": 3,
-        "function action_app_core(": 188,
-        "function action_import_status()": 406,
-        "function action_import()": 433,
-        "function action_get_memory()": 445
-      }
-    },
-    "/usr/lib/lua/luci/view/nradio_appcenter/appcenter.htm": {
-      "sha256": "34880d1a070d1850c4d1d89bd2544b657f1ac746499e28d318261ecadfff5bbc",
-      "functions": {
-        "function show_app_data(": 376,
-        "function import_pkg(": 439,
-        "function callback(": 589,
-        "function request_result(": 660,
-        "function request_appstore_result(": 725
-      }
-    },
-    "/usr/lib/lua/luci/dispatcher.lua": {
-      "sha256": "2c7300c19305faf1b586cb1896a2642ed117b31c76f7d7c06bf560ec3a1a6d37",
-      "functions": {
-        "function skip_node()": 599,
-        "function entry(": 687
-      }
-    },
-    "/usr/lib/lua/luci/nradio.lua": {
-      "sha256": "177f9e2102364726d2b0f350950b3ef31f4ed665b6a88a4ecdfdc11337d17bb8",
-      "functions": {
-        "function luci_call_result(": 325
-      }
-    }
-  },
-  "subsequent_storage_update": {
-    "target": "max",
-    "date": "2026-10-26",
-    "record": "max-extroot-result.json",
-    "active_overlay": "/dev/mmcblk0p1",
-    "total_kib": 60913632,
-    "available_kib": 59536640,
-    "historical_devices_table": "Pre-expansion snapshots retained"
+  "appcenter": {
+    "http_prefix": "/cgi-bin/luci/nradioadv/system/appcenter",
+    "native_apk_local_import": "fail",
+    "observed_code": 14,
+    "observed_backend": "opkg",
+    "source_controller_template_dispatcher_identical_to_2x": true
   }
 }

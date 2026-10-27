@@ -1,8 +1,8 @@
 {
-  "purpose": "Local plugin build record; no cloud publishing",
+  "format": "unsigned-apkv2-compat",
   "package": "luci-app-nradio-demo",
-  "version": "1.0.0-1",
-  "architecture": "all",
+  "version": "1.0.0-r1",
+  "architecture": "noarch",
   "depends": [
     "libc",
     "luci-base"
@@ -10,12 +10,15 @@
   "conffiles": [
     "/etc/config/nradio_demo"
   ],
+  "file": "luci-app-nradio-demo-1.0.0-r1.apk",
+  "bytes": 2450,
+  "sha256": "98e50e0dc21c39be7a352816970dded917c882324fe16eb6cf362fa8496efaf1",
   "luci_route": "nradioadv/system/nradio_demo",
-  "file": "luci-app-nradio-demo_1.0.0-1_all.ipk",
-  "size": 2217,
-  "source_bytes": 2912,
-  "md5": "0f58b5f05757a46e3e2829b5aa747aa3",
-  "sha256": "3f7292861bf27036d9a7e02425c67d64a7f4a991e78af5ef703dcf227f6aeff1",
+  "signed": false,
+  "target_profile": "ultra-3.0.0.n0.c1-preview-apk-tools-3.0.5",
+  "device_validation": "not_run_for_this_build",
+  "appcenter_import": "not_run_for_this_build",
+  "observed_appcenter_backend": "opkg; native APK test rejected with code 14",
   "files": [
     {
       "path": "etc/config/nradio_demo",
@@ -47,7 +50,5 @@
       "mode": "0o755",
       "sha256": "de2e221d2822357a36886bd9fd8bae14b229acb5d6234cdabadab26171c9b9aa"
     }
-  ],
-  "device_validation": "not_run_for_this_build",
-  "local_import_candidate": "luci-app-nradio-demo_1.0.0-1_local.tar.gz"
+  ]
 }

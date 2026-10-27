@@ -1,95 +1,113 @@
 {
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "timezone": "Asia/Shanghai",
-  "plugin": "luci-app-nradio-demo",
-  "version": "1.0.0-1",
-  "artifact": "dist/luci-app-nradio-demo_1.0.0-1_all.ipk",
-  "artifact_sha256": "3f7292861bf27036d9a7e02425c67d64a7f4a991e78af5ef703dcf227f6aeff1",
-  "distribution": "opkg_only",
-  "verification_level": "preflight",
-  "package_installed_by_this_validation": false,
-  "targets": [
+  "kit_version": "3.0.0",
+  "plugin": "luci-app-nradio-compatprobe",
+  "target": {
+    "alias": "ultra",
+    "model": "HC-WT9500",
+    "firmware": "3.0.0.n0.c1-preview",
+    "kernel": "6.12.94"
+  },
+  "distribution": "apk_direct",
+  "artifacts": [
     {
-      "alias": "ultra",
-      "model": "HC-WT9500",
-      "firmware": "2.3.1.n0.c1",
-      "checks": {
-        "syntax": "pass",
-        "opkg_noaction": "pass",
-        "installation": "not_run",
-        "service_lifecycle": "not_run",
-        "appcenter_import": "not_run",
-        "appcenter_route_open": "not_run",
-        "upgrade": "not_run",
-        "uninstall": "not_run",
-        "rollback": "not_run",
-        "archive_structure": "pass",
-        "dependency_closure": "not_run",
-        "authentication": "not_run",
-        "resource_budget": "not_run",
-        "config_preservation": "not_run",
-        "failure_recovery": "not_run"
-      },
-      "evidence": [
-        "validation/ultra.txt",
-        "device-baseline.json",
-        "dist/host-inspection.json"
-      ],
-      "constraints": [
-        "This result applies only to the recorded firmware and artifact SHA-256.",
-        "Observed overlay free: 3795024 KiB; remeasure before deployment.",
-        "No real installation or appcenter import was executed."
-      ]
+      "path": "validation/artifacts/luci-app-nradio-compatprobe-0.1.0-r1.apk",
+      "version": "0.1.0-r1",
+      "bytes": 2447,
+      "sha256": "7ea7acb3c4262fba85f5af59ff6bc7cf6e6f605ee90d7459d32c73c0f887b8ff"
     },
     {
-      "alias": "max",
-      "model": "HC-WT9303",
-      "firmware": "2.3.3.n0.c1",
-      "checks": {
-        "syntax": "pass",
-        "opkg_noaction": "pass",
-        "installation": "not_run",
-        "service_lifecycle": "not_run",
-        "appcenter_import": "not_run",
-        "appcenter_route_open": "not_run",
-        "upgrade": "not_run",
-        "uninstall": "not_run",
-        "rollback": "not_run",
-        "archive_structure": "pass",
-        "dependency_closure": "not_run",
-        "authentication": "not_run",
-        "resource_budget": "not_run",
-        "config_preservation": "not_run",
-        "failure_recovery": "not_run"
-      },
-      "evidence": [
-        "validation/max.txt",
-        "device-baseline.json",
-        "dist/host-inspection.json"
-      ],
-      "constraints": [
-        "This result applies only to the recorded firmware and artifact SHA-256.",
-        "Historical pre-TF preflight overlay free: 2900 KiB; remeasure before deployment.",
-        "No real installation or appcenter import was executed.",
-        "Later TF extroot storage update is in max-extroot-result.json; it does not certify plugin runtime."
-      ]
+      "path": "validation/artifacts/luci-app-nradio-compatprobe-0.2.0-r1.apk",
+      "version": "0.2.0-r1",
+      "bytes": 2449,
+      "sha256": "cec8e8d6e741b6bd80f1146a7e0e4073064e88bf0bda76c7deb5defaf3029cf0"
     }
   ],
-  "spec_version": "1.3",
-  "evidence_tool_revision": "1.0-demo-specific; historical device evidence",
-  "subsequent_storage_update": "max-extroot-result.json; does not upgrade historical plugin test results",
-  "current_phase": "plugin_creation_and_local_testing",
-  "out_of_scope": [
-    "official_online_publication"
-  ],
-  "host_validation": {
-    "profile": "nradio-gzip-tar-strict",
-    "status": "pass",
-    "evidence": "dist/host-inspection.json"
+  "checks": {
+    "archive_structure": "pass",
+    "embedded_per_file_checksums": "pass",
+    "syntax": "pass",
+    "apk_simulate": "pass",
+    "dependency_closure": "pass",
+    "installation": "pass",
+    "direct_luci_page": "pass",
+    "authentication": "pass",
+    "cbi_save": "pass",
+    "service_start_stop": "pass",
+    "upgrade_enabled_state": "pass",
+    "config_preservation": "pass",
+    "uninstall": "pass",
+    "cleanup": "pass",
+    "core_configuration_unchanged": "pass",
+    "package_database_restored": "pass",
+    "sdk_build": "not_run",
+    "native_elf_abi": "not_run",
+    "kmod": "not_run",
+    "mobile_viewport": "not_run",
+    "ram_peak": "not_run",
+    "disk_full_recovery": "not_run",
+    "reboot_autostart": "not_run",
+    "disabled_autostart_upgrade_preservation": "not_run",
+    "rollback": "not_run",
+    "http_upload_transport": "not_run",
+    "appcenter_iframe": "not_run",
+    "appcenter_update": "not_run",
+    "appcenter_uninstall": "not_run",
+    "legacy_ipk_normal_dependency_preflight": "fail",
+    "appcenter_native_apk_import": "fail"
   },
-  "construction_tools_regression": {
-    "cases": 24,
+  "out_of_scope": [
+    "official_online_publication",
+    "other_device_models"
+  ],
+  "evidence": [
+    "device-baseline.json",
+    "validation/ultra3-legacy-ipk-rejection.txt",
+    "validation/ultra3-native-apk-install.txt",
+    "validation/ultra3-native-apk-upgrade.txt",
+    "validation/ultra3-native-apk-cleanup.txt",
+    "validation/ultra3-appcenter-native-apk-rejected.txt",
+    "validation/ultra3-initial-format-failure.txt",
+    "validation/ultra3-http-inspect.json",
+    "validation/ultra3-http-enable.json",
+    "validation/ultra3-http-after-upgrade.json",
+    "validation/ultra3-http-removed.json"
+  ],
+  "test_state": {
+    "test_package_installed_at_end": false,
+    "test_service_running_at_end": false,
+    "core_configurations_unchanged": true,
+    "system_apk_database_exactly_restored": true,
+    "apk_database_sha256_before_and_after": "5d10244b01db84f1b99862c5fe3ba86c338d92fe72108edc7e555a1ca868329b",
+    "core_configurations_sha256": {
+      "/etc/config/network": "58cf3802e09434a8f742e7a751a37ae2526a32cacb60e4a68fd7dbac7b307d80",
+      "/etc/config/dhcp": "20f4ea65b3be97feddd5088edc92889f548cac882f1f4e5229166740244fa2d4",
+      "/etc/config/firewall": "f8763dae16800d0498efd8253ce36f6f1bd39118da29cb965574b5725db6b0e2",
+      "/etc/config/wireless": "b9854c823a6e648a90fde87bab0ceab11f8b2278a8f8be6e5511d8095bf3e407",
+      "/etc/config/fstab": "63b226ba87376695dc60a7e80191778963d2f4b64e03f7bac0fc2afa32e84bdb"
+    }
+  },
+  "limitations": [
+    "Observed firmware instance only; future 3.x builds require re-audit.",
+    "Minimal example hooks enable/restart unconditionally; production upgrade state preservation requires implementation.",
+    "The initial checksum-less APK prototype passed verify/simulate but failed real extraction; only corrected per-file-checksummed artifacts are successful.",
+    "Native APK import rejected by official appcenter with code=14; do not bypass dependency checks or forge opkg ownership.",
+    "Archive-wrapped APK import and official HTTP upload transport were not tested.",
+    "The shipped demo APK is a host-checked example; real device execution used the recorded compatprobe artifacts."
+  ],
+  "negative_fixture": {
+    "path": "tests/fixtures/legacy-demo.ipk",
+    "sha256": "3f7292861bf27036d9a7e02425c67d64a7f4a991e78af5ef703dcf227f6aeff1",
+    "result": "normal opkg dependency preflight rejected on ultra 3.0"
+  },
+  "host_regressions": {
+    "legacy_payload_archive_cases": 24,
+    "native_apk_cases": 22,
     "status": "pass",
-    "evidence": "construction-tool-validation.json"
+    "evidence": [
+      "construction-tool-validation.json",
+      "apk-tool-validation.json"
+    ]
   }
 }

@@ -1,22 +1,30 @@
 {
-  "profile": "nradio-gzip-tar-strict",
+  "profile": "unsigned-apkv2-compat-strict",
   "status": "pass",
-  "file": "luci-app-nradio-demo_1.0.0-1_all.ipk",
-  "sha256": "3f7292861bf27036d9a7e02425c67d64a7f4a991e78af5ef703dcf227f6aeff1",
-  "bytes": 2217,
-  "control": {
-    "Package": "luci-app-nradio-demo",
-    "Version": "1.0.0-1",
-    "Architecture": "all",
-    "Maintainer": "Example developer",
-    "Section": "luci",
-    "Priority": "optional",
-    "Depends": "libc, luci-base",
-    "License": "MIT",
-    "Installed-Size": "2912",
-    "Description": "Lightweight NRadio plugin development example"
+  "file": "luci-app-nradio-demo-1.0.0-r1.apk",
+  "sha256": "98e50e0dc21c39be7a352816970dded917c882324fe16eb6cf362fa8496efaf1",
+  "bytes": 2450,
+  "metadata": {
+    "pkgname": "luci-app-nradio-demo",
+    "pkgver": "1.0.0-r1",
+    "pkgdesc": "Lightweight NRadio plugin development example",
+    "builddate": "0",
+    "packager": "Example developer",
+    "size": "2912",
+    "arch": "noarch",
+    "license": "MIT",
+    "datahash": "d348258fa337992214a864ae0e6f056a5f2eb83be3bc4ee9d74d5b69b8d375b9"
   },
-  "source_bytes": 2912,
+  "depends": [
+    "libc",
+    "luci-base"
+  ],
+  "hooks": [
+    ".post-deinstall",
+    ".post-install",
+    ".post-upgrade",
+    ".pre-deinstall"
+  ],
   "files": [
     {
       "path": "etc/config/nradio_demo",
@@ -49,6 +57,5 @@
       "sha256": "de2e221d2822357a36886bd9fd8bae14b229acb5d6234cdabadab26171c9b9aa"
     }
   ],
-  "elf_files_require_runtime_abi_check": [],
-  "scope": "Host structure/metadata only; not device validation"
+  "scope": "Structure and datahash only; unsigned; no install, ABI or appcenter certification"
 }

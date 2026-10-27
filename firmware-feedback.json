@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-27",
+  "firmware": "ultra HC-WT9500 3.0.0.n0.c1-preview",
+  "confirmed_findings": [
+    {
+      "id": "FW3-PKGDB-001",
+      "priority": "high",
+      "summary": "APK 系统包与兼容 opkg 数据库隔离，旧 IPK 正常依赖检查失败",
+      "observed": "apk info --exists libc luci-base 成功；opkg list-installed 无系统包记录；带 libc/luci-base 依赖的旧脚本 IPK 在正常 opkg noaction 中报依赖不存在，退出 255。",
+      "impact": "插件即使只依赖固件中已经存在的 Lua/LuCI，也不能通过旧 IPK 的正常依赖验收；不能靠 CPU 架构相同判断跨版本兼容。",
+      "suggestion": "明确 3.x 的受支持包管理器与格式；以原生 APK 作为主路径。若保留 IPK 兼容，需要厂商实现完整依赖与文件归属桥接，不建议由第三方插件补写数据库或忽略依赖。",
+      "evidence": ["device-baseline.json", "validation/ultra3-legacy-ipk-rejection.txt"]
+    },
+    {
+      "id": "FW3-APPCENTER-002",
+      "priority": "high",
+      "summary": "商店本地导入仍调用 opkg，拒绝已验证可运行的原生 APK",
+      "observed": "同一 SHA-256 的 APK 已通过原生安装、直接 LuCI 页面、CBI、服务、升级和卸载；移除后向 appcenter local 提交，返回 code=14，errro_detail 为 opkg 无法安装该 .apk。前后 APK 数据库和 world 摘要不变。",
+      "impact": "3.x 原生 APK 开发路径与官方本地导入路径未打通。安装命令之外，商店文件归属查询也仍使用 opkg，后续卡片/路由识别需要一起适配。",
+      "suggestion": "将安装、版本查询、文件归属、升级、卸载统一到 APK 后端；导入前校验格式并给出明确兼容提示；平台完成后重测 has_luci、iframe、升级、配置保护和卸载。不要仅替换安装命令。",
+      "evidence": ["validation-result.json", "validation/ultra3-appcenter-native-apk-rejected.txt", "device-baseline.json"]
+    }
+  ],
+  "design_recommendations_not_claimed_as_failures": [
+    "商店目录当前仍列出 .ipk；建议按固件主版本、包管理后端和必要 ABI 分发目录，避免同架构跨版本误投。未对用户现有商店应用做安装破坏性测试。",
+    "提供与本测试固件匹配的 SDK、工具链/内核 ABI、依赖仓库和签名说明；当前通用 OpenWrt feeds 与厂商构建的兼容性尚未验证，缓存缺失警告不作为仓库不可用的结论。",
+    "APK verify/simulate 不覆盖所有真实提取条件；第三方包预检应包含真实安装回归。此次缺少逐文件校验的早期实验包是开发工具问题，已修复，不作为固件格式解析缺陷上报。"
+  ],
+  "test_cleanup": "独立测试插件已卸载；系统 APK 数据库恢复原摘要，网络/DHCP/防火墙/无线/fstab 摘要未变。未修改官方商店或固件实现。"
+}

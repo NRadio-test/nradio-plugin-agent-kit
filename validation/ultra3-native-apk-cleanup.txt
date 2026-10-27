@@ -1,0 +1,39 @@
+luci-app-nradio-compatprobe
+===STOP_AND_DISABLE_TEST_SERVICE===
+===STOPPED_SERVICE===
+{
+
+}
+===REMOVE_PLAN===
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/targets/mediatek/filogic/packages/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/base/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/mtk_openwrt_feed/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/packages/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/routing/packages.adb: No such file or directory
+(1/1) Purging luci-app-nradio-compatprobe (0.2.0-r1)
+OK: 72.8 MiB in 522 packages
+===REMOVE_TEST_PACKAGE_ONLY===
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/targets/mediatek/filogic/packages/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/base/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/mtk_openwrt_feed/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/packages/packages.adb: No such file or directory
+WARNING: opening from cache https://downloads.openwrt.org/releases/25.12-SNAPSHOT/packages/aarch64_cortex-a53/routing/packages.adb: No such file or directory
+(1/1) Purging luci-app-nradio-compatprobe (0.2.0-r1)
+  Executing luci-app-nradio-compatprobe-0.2.0-r1.pre-deinstall
+  * Command failed: ubus call service delete { "name": "nradio-compatprobe" } (Not found)
+  Executing luci-app-nradio-compatprobe-0.2.0-r1.post-deinstall
+OK: 72.8 MiB in 522 packages
+===CLEAN_TEST_CREATED_CONFIGURATION_ONLY===
+===CORE_CONFIG_AFTER_ALL_TESTS===
+58cf3802e09434a8f742e7a751a37ae2526a32cacb60e4a68fd7dbac7b307d80  /etc/config/network
+20f4ea65b3be97feddd5088edc92889f548cac882f1f4e5229166740244fa2d4  /etc/config/dhcp
+f8763dae16800d0498efd8253ce36f6f1bd39118da29cb965574b5725db6b0e2  /etc/config/firewall
+b9854c823a6e648a90fde87bab0ceab11f8b2278a8f8be6e5511d8095bf3e407  /etc/config/wireless
+63b226ba87376695dc60a7e80191778963d2f4b64e03f7bac0fc2afa32e84bdb  /etc/config/fstab
+===FINAL_PACKAGE_DATABASE===
+5d10244b01db84f1b99862c5fe3ba86c338d92fe72108edc7e555a1ca868329b  /lib/apk/db/installed
+00d0620c31032e4b01a69b6b810d7f1c710be4610d0cf3e7dc34f106f0095658  /etc/apk/world
+===MANAGEMENT_STILL_AVAILABLE===
+192.168.66.2
+ACCEPT
+===TEST_PLUGIN_UNINSTALLED_AND_OWN_FILES_CLEANED===
